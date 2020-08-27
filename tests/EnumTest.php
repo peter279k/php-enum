@@ -19,13 +19,13 @@ class EnumTest extends \PHPUnit\Framework\TestCase
     public function testGetValue()
     {
         $value = new EnumFixture(EnumFixture::FOO);
-        $this->assertEquals(EnumFixture::FOO, $value->getValue());
+        $this->assertSame(EnumFixture::FOO, $value->getValue());
 
         $value = new EnumFixture(EnumFixture::BAR);
-        $this->assertEquals(EnumFixture::BAR, $value->getValue());
+        $this->assertSame(EnumFixture::BAR, $value->getValue());
 
         $value = new EnumFixture(EnumFixture::NUMBER);
-        $this->assertEquals(EnumFixture::NUMBER, $value->getValue());
+        $this->assertSame(EnumFixture::NUMBER, $value->getValue());
     }
 
     /**
@@ -34,7 +34,7 @@ class EnumTest extends \PHPUnit\Framework\TestCase
     public function testGetKey()
     {
         $value = new EnumFixture(EnumFixture::FOO);
-        $this->assertEquals('FOO', $value->getKey());
+        $this->assertSame('FOO', $value->getKey());
         $this->assertNotEquals('BA', $value->getKey());
     }
 
@@ -305,7 +305,7 @@ class EnumTest extends \PHPUnit\Framework\TestCase
         $bin = '4f3a33303a224d79434c6162735c54657374735c456e756d5c456e756d4669787'.
             '4757265223a313a7b733a383a22002a0076616c7565223b733a333a22666f6f223b7d';
 
-        $this->assertEquals($bin, bin2hex(serialize(EnumFixture::FOO())));
+        $this->assertSame($bin, bin2hex(serialize(EnumFixture::FOO())));
     }
 
     public function testUnserialize()
@@ -317,7 +317,7 @@ class EnumTest extends \PHPUnit\Framework\TestCase
         /* @var $value EnumFixture */
         $value = unserialize(pack('H*', $bin));
 
-        $this->assertEquals(EnumFixture::FOO, $value->getValue());
+        $this->assertSame(EnumFixture::FOO, $value->getValue());
         $this->assertTrue(EnumFixture::FOO()->equals($value));
     }
 
